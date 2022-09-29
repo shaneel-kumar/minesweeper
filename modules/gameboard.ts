@@ -9,6 +9,9 @@ function Gameboard({width, height, difficulty = 'easy'}: GameboardInputs) {
   const state: string[][] = []
 
   createBoard()
+  const click: Coords = {row: 0, col: 0}
+  updateEmptySquare(click)
+  console.table(state)
 
   function populateRandomMines() {
     let numberOfMines = (() => {
@@ -43,6 +46,40 @@ function Gameboard({width, height, difficulty = 'easy'}: GameboardInputs) {
       state.push(stateRow)
     }
     populateRandomMines()
+  }
+
+  function updateEmptySquare({row, col}: Coords) {
+
+    if (state[row][col] === 'M') {
+      state[row][col] = 'X'
+      console.log('Game over!')
+    } else {
+      // Calculate the number of adjacent mines
+      let adjacentMines = 0
+      for (let x = -1; x < 2; x++) {
+        for (let y = -1; y < 2; y++) {
+          if ((row + x) < 0 || (row + x) > state.length - 1) continue
+          if (col + y < 0 || col + y > state[0].length - 1) continue
+          if (state[row + x][col + y] === 'M') adjacentMines += 1
+        }
+      }
+      
+      // If no adjacent mines, make tile blank
+      if (adjacentMines == 0) {
+        state[row][col] = 'B'
+        for (let x = -1; x < 2; x++) {
+          for (let y = -1; y < 2; y++) {
+            if (x === 0 && y === 0) continue
+            if ((row + x) < 0 || (row + x) > state.length - 1) continue
+            if ((col + y) < 0 || (col + y) > state[0].length - 1) continue
+            if (state[row + x][col + y] !== 'E') continue
+            updateEmptySquare({row: row + x, col: col + y})
+          }
+        }
+      } else {
+        state[row][col] = adjacentMines.toString()
+      }
+    }
   }
 
   return {
