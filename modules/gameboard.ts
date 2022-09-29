@@ -1,11 +1,4 @@
-interface GameboardInputs {
-  width: number;
-  height: number;
-  difficulty?: string;
-}
-
-
-function Gameboard({width, height, difficulty = 'easy'}: GameboardInputs) {
+function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
   const state: string[][] = []
 
   createBoard()

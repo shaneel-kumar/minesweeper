@@ -1,10 +1,10 @@
 import Gameboard from './modules/gameboard.js'
+import Display from './modules/display.js'
 
-const uiBoard = document.querySelector('.gameGrid') as Element
+const width = 10
+const height = 5
 
-const gameboard = Gameboard({
-  width: 10, 
-  height: 5
-})
+const gameboard = Gameboard({ width, height })
+const display = Display( {width, height} )
 
 let board = gameboard.state
