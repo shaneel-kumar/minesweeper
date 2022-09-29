@@ -5,6 +5,7 @@ const display = Display();
 let { width, height } = gridDimensionsByDifficulty('easy');
 let gameboard = Gameboard({ width, height });
 display.createGrid({ width, height });
+display.uiBoard.addEventListener('click', gameloop);
 Array.from(difficultyButtons).forEach(button => {
     button.addEventListener('click', (e) => {
         const target = e.target;
@@ -12,12 +13,17 @@ Array.from(difficultyButtons).forEach(button => {
         let { width, height } = gridDimensionsByDifficulty(difficulty);
         gameboard = Gameboard({ width, height, difficulty });
         display.createGrid({ width, height });
+        display.uiBoard.addEventListener('click', gameloop);
     });
 });
-display.uiBoard.addEventListener('click', (e) => {
+function gameloop(e) {
     const target = e.target;
     if (!target.classList.contains('cell'))
         return;
+    if (gameboard.isGameOver()) {
+        display.uiBoard.removeEventListener('click', gameloop);
+        return;
+    }
     const rowData = target.getAttribute('data-x');
     const colData = target.getAttribute('data-y');
     if (rowData && colData) {
@@ -25,9 +31,8 @@ display.uiBoard.addEventListener('click', (e) => {
         const col = parseInt(colData);
         gameboard.updateEmptySquare({ row, col });
         display.updateGrid(gameboard.state);
-        console.table(gameboard.state);
     }
-});
+}
 function gridDimensionsByDifficulty(setting) {
     if (setting === 'medium')
         return { width: 10, height: 10 };

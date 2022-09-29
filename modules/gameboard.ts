@@ -1,10 +1,12 @@
 function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
   const state: State = []
+  let gameOver = false
 
   createBoard()
   console.table(state)
 
   function populateRandomMines() {
+    
     let numberOfMines = (() => {
       if (difficulty === 'medium') return 6
       if (difficulty === 'hard') return 12
@@ -40,10 +42,11 @@ function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
   }
 
   function updateEmptySquare({row, col}: Coords) {
-
     if (state[row][col] === 'M') {
       state[row][col] = 'X'
       console.log('Game over!')
+      gameOver = true
+      
     } else {
       // Calculate the number of adjacent mines
       let adjacentMines = 0
@@ -73,10 +76,15 @@ function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
     }
   }
 
+  function isGameOver() {
+    return gameOver
+  }
+
   return {
     state,
     difficulty,
-    updateEmptySquare
+    updateEmptySquare,
+    isGameOver
   }
 }
 
