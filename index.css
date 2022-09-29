@@ -28,7 +28,6 @@ body {
   --size: 2rem;
   width: var(--size);
   height: var(--size);
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,12 +41,15 @@ body {
   background: rgba(0, 0, 0, 0.05)
 }
 
-.cell.blank {
+.cell.blank, .cell.mine {
   background: lightgray;
 }
 
 .cell.mine {
-  background: red;
+  background-image: url('./assets/icons/bug.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  
 }
 
 .diff-btn {
