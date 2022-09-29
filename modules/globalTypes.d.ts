@@ -8,3 +8,5 @@ interface BoardDimensions {
   height: number;
   difficulty?: string;
 }
+
+type State = string[][]

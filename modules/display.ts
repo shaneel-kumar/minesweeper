@@ -23,9 +23,22 @@ function Display() {
     }
   }
 
+  function updateGrid(state: State) {
+    state.forEach((row, xIndex) => {
+      row.forEach((cell, yIndex) => {
+        const uiCell = document.querySelector(`[data-x='${xIndex}'][data-y='${yIndex}']`) as HTMLDivElement
+        if (cell === 'E' || cell === 'M') return
+        if (cell === 'B') return uiCell?.classList.add('blank')
+        if (cell === 'X') return uiCell?.classList.add('mine')
+        return uiCell.innerText = cell
+      })
+    })
+  }
+
   return {
     uiBoard,
-    createGrid
+    createGrid,
+    updateGrid
   }
 }
 

@@ -28,7 +28,26 @@ body {
   --size: 2rem;
   width: var(--size);
   height: var(--size);
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:nth-child(2n) {
+  background: rgba(0, 0, 0, 0.05)
+}
+
+.gridRow:nth-child(2n) {
+  background: rgba(0, 0, 0, 0.05)
+}
+
+.cell.blank {
+  background: lightgray;
+}
+
+.cell.mine {
+  background: red;
 }
 
 .diff-btn {

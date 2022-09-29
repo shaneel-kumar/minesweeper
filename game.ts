@@ -31,6 +31,7 @@ display.createGrid({ width, height })
       const row = parseInt(rowData)
       const col = parseInt(colData)
       gameboard.updateEmptySquare({row, col})
+      display.updateGrid(gameboard.state)
       console.table(gameboard.state)
     }
 

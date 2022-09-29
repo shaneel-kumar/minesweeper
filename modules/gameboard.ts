@@ -1,5 +1,5 @@
 function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
-  const state: string[][] = []
+  const state: State = []
 
   createBoard()
   console.table(state)

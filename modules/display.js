@@ -20,9 +20,24 @@ function Display() {
             uiBoard.removeChild(uiBoard.firstChild);
         }
     }
+    function updateGrid(state) {
+        state.forEach((row, xIndex) => {
+            row.forEach((cell, yIndex) => {
+                const uiCell = document.querySelector(`[data-x='${xIndex}'][data-y='${yIndex}']`);
+                if (cell === 'E' || cell === 'M')
+                    return;
+                if (cell === 'B')
+                    return uiCell === null || uiCell === void 0 ? void 0 : uiCell.classList.add('blank');
+                if (cell === 'X')
+                    return uiCell === null || uiCell === void 0 ? void 0 : uiCell.classList.add('mine');
+                return uiCell.innerText = cell;
+            });
+        });
+    }
     return {
         uiBoard,
-        createGrid
+        createGrid,
+        updateGrid
     };
 }
 export default Display;
