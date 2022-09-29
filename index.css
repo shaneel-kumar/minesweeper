@@ -19,7 +19,7 @@ body {
   border: 2px solid red;
 }
 
-.gameRow {
+.gridRow {
   display: flex;
   flex-direction: row;
 }

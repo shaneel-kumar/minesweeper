@@ -1,5 +1,5 @@
 import gameboard from './modules/gameboard.js';
-gameboard();
+gameboard({ width: 10, height: 5 });
 let board = [
     ['E', 'E', 'E'],
     ['E', 'E', 'E'],

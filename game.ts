@@ -1,6 +1,6 @@
 import gameboard from './modules/gameboard.js'
 
-gameboard()
+gameboard({width: 10, height: 5})
 
 interface Coords {
   board: string[][]
