@@ -1,7 +1,7 @@
 import Gameboard from './modules/gameboard.js'
 
 interface Coords {
-  board: string[][]
+  // board: string[][];
   row: number;
   col: number;
 }
@@ -16,9 +16,9 @@ const gameboard = Gameboard({
 
 let board = gameboard.state
 
-const click: Coords = {board, row: 0, col: 0}
+const click: Coords = {row: 0, col: 0}
 
-function updateEmptySquare({board, row, col}: Coords) {
+function updateEmptySquare({row, col}: Coords) {
 
   if (board[row][col] === 'M') {
     board[row][col] = 'X'
@@ -43,7 +43,7 @@ function updateEmptySquare({board, row, col}: Coords) {
           if ((row + x) < 0 || (row + x) > board.length - 1) continue
           if ((col + y) < 0 || (col + y) > board[0].length - 1) continue
           if (board[row + x][col + y] !== 'E') continue
-          updateEmptySquare({board, row: row + x, col: col + y})
+          updateEmptySquare({row: row + x, col: col + y})
         }
       }
     } else {

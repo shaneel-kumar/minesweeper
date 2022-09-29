@@ -6,8 +6,8 @@ const gameboard = Gameboard({
     uiBoard
 });
 let board = gameboard.state;
-const click = { board, row: 0, col: 0 };
-function updateEmptySquare({ board, row, col }) {
+const click = { row: 0, col: 0 };
+function updateEmptySquare({ row, col }) {
     if (board[row][col] === 'M') {
         board[row][col] = 'X';
         console.log('Game over!');
@@ -38,7 +38,7 @@ function updateEmptySquare({ board, row, col }) {
                         continue;
                     if (board[row + x][col + y] !== 'E')
                         continue;
-                    updateEmptySquare({ board, row: row + x, col: col + y });
+                    updateEmptySquare({ row: row + x, col: col + y });
                 }
             }
         }
