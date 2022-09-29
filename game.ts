@@ -1,3 +1,7 @@
+import gameboard from './modules/gameboard.js'
+
+gameboard()
+
 interface Coords {
   board: string[][]
   row: number;

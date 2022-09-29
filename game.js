@@ -1,4 +1,5 @@
-"use strict";
+import gameboard from './modules/gameboard.js';
+gameboard();
 let board = [
     ['E', 'E', 'E'],
     ['E', 'E', 'E'],
