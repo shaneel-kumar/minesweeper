@@ -8,6 +8,8 @@ function Display() {
             for (let j = 0; j < width; j++) {
                 const cell = document.createElement('div');
                 cell.classList.add('cell');
+                cell.setAttribute('data-x', i.toString());
+                cell.setAttribute('data-y', j.toString());
                 row.appendChild(cell);
             }
             uiBoard.appendChild(row);
@@ -19,6 +21,7 @@ function Display() {
         }
     }
     return {
+        uiBoard,
         createGrid
     };
 }

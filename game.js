@@ -14,6 +14,19 @@ Array.from(difficultyButtons).forEach(button => {
         display.createGrid({ width, height });
     });
 });
+display.uiBoard.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!target.classList.contains('cell'))
+        return;
+    const rowData = target.getAttribute('data-x');
+    const colData = target.getAttribute('data-y');
+    if (rowData && colData) {
+        const row = parseInt(rowData);
+        const col = parseInt(colData);
+        gameboard.updateEmptySquare({ row, col });
+        console.table(gameboard.state);
+    }
+});
 function gridDimensionsByDifficulty(setting) {
     if (setting === 'medium')
         return { width: 10, height: 10 };

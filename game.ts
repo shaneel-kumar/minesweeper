@@ -21,6 +21,21 @@ display.createGrid({ width, height })
     })
   })
 
+  display.uiBoard.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement
+    if (!target.classList.contains('cell')) return
+
+    const rowData = target.getAttribute('data-x')
+    const colData = target.getAttribute('data-y')
+    if (rowData && colData) {
+      const row = parseInt(rowData)
+      const col = parseInt(colData)
+      gameboard.updateEmptySquare({row, col})
+      console.table(gameboard.state)
+    }
+
+  })
+
 function gridDimensionsByDifficulty(setting: string): 
   {width: number, height: number} {
   if (setting === 'medium') return {width: 10, height: 10}

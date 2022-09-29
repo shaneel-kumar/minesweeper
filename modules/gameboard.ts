@@ -2,8 +2,6 @@ function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
   const state: string[][] = []
 
   createBoard()
-  const click: Coords = {row: 0, col: 0}
-  updateEmptySquare(click)
   console.table(state)
 
   function populateRandomMines() {
@@ -76,7 +74,8 @@ function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
   }
 
   return {
-    state
+    state,
+    updateEmptySquare
   }
 }
 
