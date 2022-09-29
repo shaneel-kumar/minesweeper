@@ -1,12 +1,12 @@
-import gameboard from './modules/gameboard.js';
-gameboard({ width: 10, height: 5 });
-let board = [
-    ['E', 'E', 'E'],
-    ['E', 'E', 'E'],
-    ['E', 'E', 'M'],
-];
-console.table(board);
-const click = { board: board, row: 2, col: 2 };
+import Gameboard from './modules/gameboard.js';
+const uiBoard = document.querySelector('.gameGrid');
+const gameboard = Gameboard({
+    width: 10,
+    height: 5,
+    uiBoard
+});
+let board = gameboard.state;
+const click = { board, row: 0, col: 0 };
 function updateEmptySquare({ board, row, col }) {
     if (board[row][col] === 'M') {
         board[row][col] = 'X';
@@ -38,7 +38,7 @@ function updateEmptySquare({ board, row, col }) {
                         continue;
                     if (board[row + x][col + y] !== 'E')
                         continue;
-                    updateEmptySquare({ board: board, row: row + x, col: col + y });
+                    updateEmptySquare({ board, row: row + x, col: col + y });
                 }
             }
         }

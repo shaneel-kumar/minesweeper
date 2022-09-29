@@ -1,6 +1,4 @@
-import gameboard from './modules/gameboard.js'
-
-gameboard({width: 10, height: 5})
+import Gameboard from './modules/gameboard.js'
 
 interface Coords {
   board: string[][]
@@ -8,16 +6,17 @@ interface Coords {
   col: number;
 }
 
-let board = 
-[
-  ['E', 'E', 'E'],
-  ['E', 'E', 'E'],
-  ['E', 'E', 'M'],
-]
+const uiBoard = document.querySelector('.gameGrid') as Element
 
-console.table(board)
+const gameboard = Gameboard({
+  width: 10, 
+  height: 5,
+  uiBoard
+})
 
-const click: Coords = {board: board, row: 2, col: 2}
+let board = gameboard.state
+
+const click: Coords = {board, row: 0, col: 0}
 
 function updateEmptySquare({board, row, col}: Coords) {
 
@@ -44,7 +43,7 @@ function updateEmptySquare({board, row, col}: Coords) {
           if ((row + x) < 0 || (row + x) > board.length - 1) continue
           if ((col + y) < 0 || (col + y) > board[0].length - 1) continue
           if (board[row + x][col + y] !== 'E') continue
-          updateEmptySquare({board: board, row: row + x, col: col + y})
+          updateEmptySquare({board, row: row + x, col: col + y})
         }
       }
     } else {
