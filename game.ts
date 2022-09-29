@@ -5,18 +5,18 @@ const difficultyButtons = document.querySelectorAll('.diff-btn')
 
 const display = Display()
 let {width, height} = gridDimensionsByDifficulty('easy')
-const gameboard = Gameboard({ width, height })
+let gameboard = Gameboard({ width, height })
 display.createGrid({ width, height })
 
 
   Array.from(difficultyButtons).forEach(button => {
     button.addEventListener('click', (e) => {
       const target = e.target as HTMLButtonElement
-      const setting = target.id.toLowerCase()
+      const difficulty = target.id.toLowerCase()
 
 
-      let {width, height} = gridDimensionsByDifficulty(setting)
-      const gameboard = Gameboard({ width, height })
+      let {width, height} = gridDimensionsByDifficulty(difficulty)
+      gameboard = Gameboard({ width, height, difficulty })
       display.createGrid({ width, height })
     })
   })

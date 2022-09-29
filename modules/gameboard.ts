@@ -75,6 +75,7 @@ function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
 
   return {
     state,
+    difficulty,
     updateEmptySquare
   }
 }

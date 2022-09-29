@@ -76,6 +76,7 @@ function Gameboard({ width, height, difficulty = 'easy' }) {
     }
     return {
         state,
+        difficulty,
         updateEmptySquare
     };
 }
