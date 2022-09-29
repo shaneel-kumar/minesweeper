@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.gameGrid {
+  border: 2px solid red;
+}
+
+.gameRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  --size: 2rem;
+  width: var(--size);
+  height: var(--size);
+  border: 1px solid black;
+}
+
+.diff-btn {
+  width: 200px;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 0;
+}
