@@ -10,7 +10,6 @@ interface Coords {
   y: number;
 }
 
-const UIBoard = document.querySelector('.gameGrid')
 
 function Gameboard({width, height, uiBoard, difficulty = 'easy'}: GameboardInputs) {
   const state: string[][] = []
@@ -54,7 +53,7 @@ function Gameboard({width, height, uiBoard, difficulty = 'easy'}: GameboardInput
         row.appendChild(cell)
       }
       state.push(stateRow)
-      UIBoard?.appendChild(row)
+      uiBoard.appendChild(row)
     }
     populateRandomMines()
   }

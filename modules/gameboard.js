@@ -1,4 +1,3 @@
-const UIBoard = document.querySelector('.gameGrid');
 function Gameboard({ width, height, uiBoard, difficulty = 'easy' }) {
     const state = [];
     createBoard();
@@ -36,7 +35,7 @@ function Gameboard({ width, height, uiBoard, difficulty = 'easy' }) {
                 row.appendChild(cell);
             }
             state.push(stateRow);
-            UIBoard === null || UIBoard === void 0 ? void 0 : UIBoard.appendChild(row);
+            uiBoard.appendChild(row);
         }
         populateRandomMines();
     }
