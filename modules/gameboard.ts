@@ -6,8 +6,8 @@ interface GameboardInputs {
 }
 
 interface Coords {
-  x: number;
-  y: number;
+  row: number;
+  col: number;
 }
 
 
@@ -28,13 +28,13 @@ function Gameboard({width, height, uiBoard, difficulty = 'easy'}: GameboardInput
       state.forEach((row, rowIndex) => {
         row.forEach((item, colIndex) => {
           if (item !== 'E') return
-          availableTiles.push({x: rowIndex, y: colIndex})
+          availableTiles.push({row: rowIndex, col: colIndex})
         })
       })
 
       const randomIndex = Math.floor(Math.random() * availableTiles.length)
-      const {x, y} = availableTiles[randomIndex]
-      state[x][y] = 'M'
+      const {row, col} = availableTiles[randomIndex]
+      state[row][col] = 'M'
     }
   }
 
