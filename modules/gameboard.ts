@@ -1,14 +1,11 @@
-import {Coords} from './globalTypes'
-
 interface GameboardInputs {
   width: number;
   height: number;
-  uiBoard: Element;
   difficulty?: string;
 }
 
 
-function Gameboard({width, height, uiBoard, difficulty = 'easy'}: GameboardInputs) {
+function Gameboard({width, height, difficulty = 'easy'}: GameboardInputs) {
   const state: string[][] = []
 
   createBoard()
@@ -38,19 +35,12 @@ function Gameboard({width, height, uiBoard, difficulty = 'easy'}: GameboardInput
   function createBoard() {
     for (let i=0; i<height; i++) {
       const stateRow = []
-      
-      const row = document.createElement('div')
-      row.classList.add('gridRow')
 
       for (let j=0; j<width; j++) {
         stateRow.push('E')
-        
-        const cell = document.createElement('div')
-        cell.classList.add('cell')
-        row.appendChild(cell)
       }
+
       state.push(stateRow)
-      uiBoard.appendChild(row)
     }
     populateRandomMines()
   }

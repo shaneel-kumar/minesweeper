@@ -1,4 +1,4 @@
-function Gameboard({ width, height, uiBoard, difficulty = 'easy' }) {
+function Gameboard({ width, height, difficulty = 'easy' }) {
     const state = [];
     createBoard();
     function populateRandomMines() {
@@ -26,16 +26,10 @@ function Gameboard({ width, height, uiBoard, difficulty = 'easy' }) {
     function createBoard() {
         for (let i = 0; i < height; i++) {
             const stateRow = [];
-            const row = document.createElement('div');
-            row.classList.add('gridRow');
             for (let j = 0; j < width; j++) {
                 stateRow.push('E');
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                row.appendChild(cell);
             }
             state.push(stateRow);
-            uiBoard.appendChild(row);
         }
         populateRandomMines();
     }
