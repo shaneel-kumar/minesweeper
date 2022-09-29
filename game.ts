@@ -1,10 +1,5 @@
+import { Coords } from './modules/globalTypes.js';
 import Gameboard from './modules/gameboard.js'
-
-interface Coords {
-  // board: string[][];
-  row: number;
-  col: number;
-}
 
 const uiBoard = document.querySelector('.gameGrid') as Element
 

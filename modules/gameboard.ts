@@ -1,13 +1,10 @@
+import {Coords} from './globalTypes'
+
 interface GameboardInputs {
   width: number;
   height: number;
   uiBoard: Element;
   difficulty?: string;
-}
-
-interface Coords {
-  row: number;
-  col: number;
 }
 
 
