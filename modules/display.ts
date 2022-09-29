@@ -1,19 +1,8 @@
-function Display({width, height}: BoardDimensions) {
-  let difficultySetting = 'easy'
-  
+function Display() {
   const uiBoard = document.querySelector('.gameGrid') as Element
-  const difficultyButtons = document.querySelectorAll('.diff-btn')
-
-  Array.from(difficultyButtons).forEach(button => {
-    button.addEventListener('click', (e) => {
-      const target = e.target as HTMLButtonElement
-      difficultySetting = target.id.toLowerCase()
-    })
-  })
   
-  createGrid()
-  
-  function createGrid() {
+  function createGrid({width, height}: BoardDimensions) {
+    clearGrid()
     for (let i = 0; i < height; i++) {
       const row = document.createElement('div')
       row.classList.add('gridRow')
@@ -26,8 +15,14 @@ function Display({width, height}: BoardDimensions) {
     }
   }
 
+  function clearGrid() {
+    while (uiBoard.firstChild) {
+      uiBoard.removeChild(uiBoard.firstChild)
+    }
+  }
+
   return {
-    difficultySetting
+    createGrid
   }
 }
 

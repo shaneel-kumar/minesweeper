@@ -1,10 +1,29 @@
 import Gameboard from './modules/gameboard.js'
 import Display from './modules/display.js'
 
-const width = 10
-const height = 5
+const difficultyButtons = document.querySelectorAll('.diff-btn')
 
+const display = Display()
+let {width, height} = gridDimensionsByDifficulty('easy')
 const gameboard = Gameboard({ width, height })
-const display = Display( {width, height} )
+display.createGrid({ width, height })
 
-let board = gameboard.state
+
+  Array.from(difficultyButtons).forEach(button => {
+    button.addEventListener('click', (e) => {
+      const target = e.target as HTMLButtonElement
+      const setting = target.id.toLowerCase()
+
+
+      let {width, height} = gridDimensionsByDifficulty(setting)
+      const gameboard = Gameboard({ width, height })
+      display.createGrid({ width, height })
+    })
+  })
+
+function gridDimensionsByDifficulty(setting: string): 
+  {width: number, height: number} {
+  if (setting === 'medium') return {width: 10, height: 10}
+  if (setting === 'hard') return {width: 20, height: 20}
+  return {width: 5, height: 5}
+}
