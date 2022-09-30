@@ -67,6 +67,10 @@ body {
   padding: 4rem;
 }
 
+.title {
+  font-size: 3rem;
+}
+
 .gameGrid {
   border: 2px solid red;
   margin: 5rem 0;
