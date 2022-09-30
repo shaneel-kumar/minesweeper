@@ -57,6 +57,7 @@ table {
 
 html {
   font-size: 62.5%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .wrapper {
@@ -69,10 +70,14 @@ html {
 
 .title {
   font-size: 3rem;
+  font-weight: 700;
+  font-variant: small-caps;
+  letter-spacing: 0.5rem;
+  color: #222;
 }
 
 .gameGrid {
-  border: 2px solid red;
+  border: 1px solid #222;
   margin: 5rem 0;
 }
 
@@ -88,6 +93,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #222;
 }
 
 .cell:nth-child(2n) {
@@ -131,7 +137,7 @@ html {
 #custom-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 #custom-form div {
@@ -159,7 +165,7 @@ html {
   font-size: 1.5rem;
   position: absolute;
   left: 5%;
-  top: -1rem;
+  top: -0.8rem;
   background: white;
 }
 
