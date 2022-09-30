@@ -65,10 +65,10 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 4rem;
 }
 
 .title {
+  margin-top: 5rem;
   font-size: 3rem;
   font-weight: 700;
   font-variant: small-caps;
@@ -83,7 +83,7 @@ html {
 }
 
 .gameGrid {
-  border: 1px solid #222;
+  border: 5px solid #555;
   margin: 5rem 0;
 }
 
