@@ -7,7 +7,7 @@ const customForm = document.getElementById('custom-form')
 customForm?.addEventListener('submit', getCustomGridDimensions)
 
 const display = Display()
-let {width, height} = gridDimensionsByDifficulty('easy')
+let {width, height} = gridDimensionsByDifficulty('medium')
 let gameboard = Gameboard({ width, height })
 display.createGrid({ width, height })
 display.uiBoard.addEventListener('click', gameloop)
@@ -49,20 +49,20 @@ display.uiBoard.addEventListener('click', gameloop)
 
 function gridDimensionsByDifficulty(setting: string): 
   {width: number, height: number} {
-  if (setting === 'medium') return {width: 10, height: 10}
-  if (setting === 'hard') return {width: 20, height: 20}
-  return {width: 5, height: 5}
+  if (setting === 'medium') return {width: 20, height: 20}
+  if (setting === 'hard') return {width: 30, height: 30}
+  return {width: 10, height: 10}
 }
 
 function getCustomGridDimensions(e: Event) {
   e.preventDefault()
 
   const minMines = 3
-  const minWidth = 5
-  const minHeight = 5
+  const minWidth = 10
+  const minHeight = 10
 
   const maxMines = 30
-  const maxWidth = 50
+  const maxWidth = 30
   const maxHeight = 30
   
   const target = e.target as HTMLFormElement

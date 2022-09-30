@@ -1,4 +1,4 @@
-function Gameboard({width, height, difficulty = 'easy', mines = 3}: BoardDimensions) {
+function Gameboard({width, height, difficulty = 'medium', mines = 20}: BoardDimensions) {
   const state: State = []
   let gameOver = false
 
@@ -8,8 +8,8 @@ function Gameboard({width, height, difficulty = 'easy', mines = 3}: BoardDimensi
   function populateRandomMines() {
     
     let numberOfMines = (() => {
-      if (difficulty === 'medium') return 6
-      if (difficulty === 'hard') return 12
+      if (difficulty === 'medium') return 55
+      if (difficulty === 'hard') return 80
       return mines
     })()
 
