@@ -1,4 +1,4 @@
-function Gameboard({ width, height, difficulty = 'easy' }) {
+function Gameboard({ width, height, difficulty = 'easy', mines = 3 }) {
     const state = [];
     let gameOver = false;
     createBoard();
@@ -9,7 +9,7 @@ function Gameboard({ width, height, difficulty = 'easy' }) {
                 return 6;
             if (difficulty === 'hard')
                 return 12;
-            return 3;
+            return mines;
         })();
         for (let i = 0; i < numberOfMines; i++) {
             const availableTiles = [];

@@ -2,6 +2,9 @@ import Gameboard from './modules/gameboard.js'
 import Display from './modules/display.js'
 
 const difficultyButtons = document.querySelectorAll('.diff-btn')
+const customForm = document.getElementById('custom-form')
+
+customForm?.addEventListener('submit', getCustomGridDimensions)
 
 const display = Display()
 let {width, height} = gridDimensionsByDifficulty('easy')
@@ -43,9 +46,39 @@ display.uiBoard.addEventListener('click', gameloop)
     target.blur()
   }
 
+
 function gridDimensionsByDifficulty(setting: string): 
   {width: number, height: number} {
   if (setting === 'medium') return {width: 10, height: 10}
   if (setting === 'hard') return {width: 20, height: 20}
   return {width: 5, height: 5}
+}
+
+function getCustomGridDimensions(e: Event) {
+  e.preventDefault()
+
+  const minMines = 3
+  const minWidth = 5
+  const minHeight = 5
+
+  const maxMines = 30
+  const maxWidth = 50
+  const maxHeight = 30
+  
+  const target = e.target as HTMLFormElement
+  const mines = parseInt((target.querySelector('#customMines')! as HTMLInputElement).value)
+  const width = parseInt((target.querySelector('#customWidth')! as HTMLInputElement).value)
+  const height = parseInt((target.querySelector('#customHeight')! as HTMLInputElement).value)
+  
+  if (mines < minMines || width < minWidth || height < minHeight) {
+    alert('Increase the custom numbers!')
+    return
+  }
+  else if (mines > maxMines || width > maxWidth || height > maxHeight) {
+    alert('Decrease the custom numbers!')
+    return
+  }
+  gameboard = Gameboard({ width, height, mines })
+  display.createGrid({ width, height })
+  display.uiBoard.addEventListener('click', gameloop)
 }

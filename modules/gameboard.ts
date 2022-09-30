@@ -1,4 +1,4 @@
-function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
+function Gameboard({width, height, difficulty = 'easy', mines = 3}: BoardDimensions) {
   const state: State = []
   let gameOver = false
 
@@ -10,7 +10,7 @@ function Gameboard({width, height, difficulty = 'easy'}: BoardDimensions) {
     let numberOfMines = (() => {
       if (difficulty === 'medium') return 6
       if (difficulty === 'hard') return 12
-      return 3
+      return mines
     })()
 
     for (let i=0; i<numberOfMines; i++) {
