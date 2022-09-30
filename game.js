@@ -32,6 +32,7 @@ function gameloop(e) {
         gameboard.updateEmptySquare({ row, col });
         display.updateGrid(gameboard.state);
     }
+    target.blur();
 }
 function gridDimensionsByDifficulty(setting) {
     if (setting === 'medium')

@@ -40,6 +40,7 @@ display.uiBoard.addEventListener('click', gameloop)
       gameboard.updateEmptySquare({row, col})
       display.updateGrid(gameboard.state)
     }
+    target.blur()
   }
 
 function gridDimensionsByDifficulty(setting: string): 

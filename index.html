@@ -9,11 +9,34 @@
   <script type="module" src="game.js"></script>
 </head>
 <body>
-  <h1>BUGSWEEPER</h1>
+  
+  <h1>Bugsweeper</h1>
+
   <div class="gameGrid"></div>
-  <h3>Difficulty:</h3>
-  <button id="easy" class="diff-btn">Easy</button>
-  <button id="medium" class="diff-btn">Medium</button>
-  <button id="hard" class="diff-btn">Hard</button>
+
+  <div class="game-options">
+    <form id="custom-form">
+      <div>
+        <label>Mines:</label>
+        <input type="number" value="3">
+      </div>
+      <div>
+        <label>Width:</label>
+        <input type="number" value="5">
+      </div>
+      <div>
+        <label>Height:</label>
+        <input type="number" value="5">
+      </div>
+      <button class="diff-btn">Custom</button>
+    </form>
+    <div class="or-divider"></div>
+    <div class="diff-btns">
+      <button id="easy" class="diff-btn">Easy</button>
+      <button id="medium" class="diff-btn">Medium</button>
+      <button id="hard" class="diff-btn">Hard</button>
+    </div>
+  </div>
+  
 </body>
 </html>
