@@ -130,6 +130,15 @@ html {
   font-size: 1.5rem;
   padding: 1rem 1.5rem;
   margin: 0.5rem 0;
+  border-radius: 1rem;
+  background-color: white;
+  border: 1px solid #222;
+  box-shadow: 2px 2px #222;
+}
+
+.diff-btn:hover {
+  color: white;
+  background: #222;
 }
 
 .game-options {
