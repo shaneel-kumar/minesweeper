@@ -3,6 +3,7 @@ import Display from './modules/display.js'
 
 const difficultyButtons = document.querySelectorAll('.diff-btn')
 const customForm = document.getElementById('custom-form')
+const difficultyHeading = document.querySelector('.diff-heading') as HTMLHeadElement
 
 customForm?.addEventListener('submit', getCustomGridDimensions)
 
@@ -11,6 +12,7 @@ let {width, height} = gridDimensionsByDifficulty('medium')
 let gameboard = Gameboard({ width, height })
 display.createGrid({ width, height })
 display.uiBoard.addEventListener('click', gameloop)
+difficultyHeading.innerText = 'Medium'
 
 
   Array.from(difficultyButtons).forEach(button => {
@@ -23,6 +25,7 @@ display.uiBoard.addEventListener('click', gameloop)
       gameboard = Gameboard({ width, height, difficulty })
       display.createGrid({ width, height })
       display.uiBoard.addEventListener('click', gameloop)
+      difficultyHeading.innerText = difficulty[0].toUpperCase().concat(Array.from(difficulty).slice(1).join(''))
     })
   })
 
@@ -81,4 +84,5 @@ function getCustomGridDimensions(e: Event) {
   gameboard = Gameboard({ width, height, mines })
   display.createGrid({ width, height })
   display.uiBoard.addEventListener('click', gameloop)
+  difficultyHeading.innerText = 'Custom'
 }

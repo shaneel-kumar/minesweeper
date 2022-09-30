@@ -2,12 +2,14 @@ import Gameboard from './modules/gameboard.js';
 import Display from './modules/display.js';
 const difficultyButtons = document.querySelectorAll('.diff-btn');
 const customForm = document.getElementById('custom-form');
+const difficultyHeading = document.querySelector('.diff-heading');
 customForm === null || customForm === void 0 ? void 0 : customForm.addEventListener('submit', getCustomGridDimensions);
 const display = Display();
 let { width, height } = gridDimensionsByDifficulty('medium');
 let gameboard = Gameboard({ width, height });
 display.createGrid({ width, height });
 display.uiBoard.addEventListener('click', gameloop);
+difficultyHeading.innerText = 'Medium';
 Array.from(difficultyButtons).forEach(button => {
     button.addEventListener('click', (e) => {
         const target = e.target;
@@ -16,6 +18,7 @@ Array.from(difficultyButtons).forEach(button => {
         gameboard = Gameboard({ width, height, difficulty });
         display.createGrid({ width, height });
         display.uiBoard.addEventListener('click', gameloop);
+        difficultyHeading.innerText = difficulty[0].toUpperCase().concat(Array.from(difficulty).slice(1).join(''));
     });
 });
 function gameloop(e) {
@@ -66,4 +69,5 @@ function getCustomGridDimensions(e) {
     gameboard = Gameboard({ width, height, mines });
     display.createGrid({ width, height });
     display.uiBoard.addEventListener('click', gameloop);
+    difficultyHeading.innerText = 'Custom';
 }

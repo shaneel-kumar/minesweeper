@@ -76,6 +76,12 @@ html {
   color: #222;
 }
 
+.diff-heading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-variant: small-caps;
+}
+
 .gameGrid {
   border: 1px solid #222;
   margin: 5rem 0;
