@@ -35,6 +35,8 @@ function gameloop(e) {
     const target = e.target;
     if (!target.classList.contains('cell'))
         return;
+    if (target.classList.contains('flag'))
+        return;
     if (gameboard.isGameOver()) {
         display.uiBoard.removeEventListener('click', gameloop);
         return;

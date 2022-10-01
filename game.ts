@@ -41,6 +41,7 @@ difficultyHeading.innerText = 'Medium'
   function gameloop(e: Event) {
     const target = e.target as HTMLElement
     if (!target.classList.contains('cell')) return
+    if (target.classList.contains('flag')) return
 
     if (gameboard.isGameOver()) {
       display.uiBoard.removeEventListener('click', gameloop)
