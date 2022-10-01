@@ -2,7 +2,6 @@ function Gameboard({ width, height, difficulty = 'medium', mines = 20 }) {
     const state = [];
     let gameOver = false;
     createBoard();
-    console.table(state);
     function populateRandomMines() {
         let numberOfMines = (() => {
             if (difficulty === 'medium')

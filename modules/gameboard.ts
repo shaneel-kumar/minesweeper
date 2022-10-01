@@ -3,7 +3,6 @@ function Gameboard({width, height, difficulty = 'medium', mines = 20}: BoardDime
   let gameOver = false
 
   createBoard()
-  console.table(state)
 
   function populateRandomMines() {
     
