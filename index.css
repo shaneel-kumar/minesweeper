@@ -156,6 +156,7 @@ html {
   justify-content: center;
   gap: 2rem;
   z-index: 2;
+  background: white;
 }
 
 #custom-form {
@@ -223,6 +224,9 @@ html {
   height: 100vh;
   width: 100vw;
   background: white;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
 }
 
 .endgame__game-over {
@@ -234,7 +238,6 @@ html {
 
 .hidden {
   display: none;
-  visibility: none;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -260,4 +263,9 @@ html {
     transform: translate(-50%, -50%);
     margin: 0;
   }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 100;}
 }
