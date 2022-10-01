@@ -3,6 +3,8 @@ import Display from './modules/display.js';
 const difficultyButtons = document.querySelectorAll('.diff-btn');
 const customForm = document.getElementById('custom-form');
 const difficultyHeading = document.querySelector('.diff-heading');
+const endGameScreen = document.querySelector('.endgame');
+endGameScreen.classList.toggle('hidden');
 customForm === null || customForm === void 0 ? void 0 : customForm.addEventListener('submit', getCustomGridDimensions);
 const display = Display();
 let { width, height } = gridDimensionsByDifficulty('medium');
@@ -14,6 +16,7 @@ Array.from(difficultyButtons).forEach(button => {
     button.addEventListener('click', (e) => {
         const target = e.target;
         const difficulty = target.id.toLowerCase();
+        endGameScreen.classList.add('hidden');
         let { width, height } = gridDimensionsByDifficulty(difficulty);
         gameboard = Gameboard({ width, height, difficulty });
         display.createGrid({ width, height });
@@ -36,8 +39,10 @@ function gameloop(e) {
         const col = parseInt(colData);
         gameboard.updateEmptySquare({ row, col });
         display.updateGrid(gameboard.state);
+        if (gameboard.isGameOver()) {
+            endGameScreen.classList.toggle('hidden');
+        }
     }
-    target.blur();
 }
 function gridDimensionsByDifficulty(setting) {
     if (setting === 'medium')
@@ -48,6 +53,7 @@ function gridDimensionsByDifficulty(setting) {
 }
 function getCustomGridDimensions(e) {
     e.preventDefault();
+    endGameScreen.classList.add('hidden');
     const minMines = 3;
     const minWidth = 10;
     const minHeight = 10;

@@ -83,6 +83,7 @@ html {
 }
 
 .gameGrid {
+  position: relative;
   border: 5px solid #555;
   margin: 5rem 0;
 }
@@ -147,6 +148,7 @@ html {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  z-index: 2;
 }
 
 #custom-form {
@@ -204,6 +206,30 @@ html {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
+}
+
+.endgame {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: white;
+}
+
+.endgame__game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10rem;
+  color: #222;
+}
+
+.hidden {
+  display: none;
+  visibility: none;
 }
 
 @media only screen and (min-width: 1200px) {

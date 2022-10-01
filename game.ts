@@ -4,7 +4,9 @@ import Display from './modules/display.js'
 const difficultyButtons = document.querySelectorAll('.diff-btn')
 const customForm = document.getElementById('custom-form')
 const difficultyHeading = document.querySelector('.diff-heading') as HTMLHeadElement
+const endGameScreen = document.querySelector('.endgame') as HTMLDivElement
 
+endGameScreen.classList.toggle('hidden')
 customForm?.addEventListener('submit', getCustomGridDimensions)
 
 const display = Display()
@@ -19,7 +21,7 @@ difficultyHeading.innerText = 'Medium'
     button.addEventListener('click', (e) => {
       const target = e.target as HTMLButtonElement
       const difficulty = target.id.toLowerCase()
-
+      endGameScreen.classList.add('hidden')
 
       let {width, height} = gridDimensionsByDifficulty(difficulty)
       gameboard = Gameboard({ width, height, difficulty })
@@ -45,8 +47,10 @@ difficultyHeading.innerText = 'Medium'
       const col = parseInt(colData)
       gameboard.updateEmptySquare({row, col})
       display.updateGrid(gameboard.state)
+      if (gameboard.isGameOver()) {
+        endGameScreen.classList.toggle('hidden')
+      }
     }
-    target.blur()
   }
 
 
@@ -59,6 +63,7 @@ function gridDimensionsByDifficulty(setting: string):
 
 function getCustomGridDimensions(e: Event) {
   e.preventDefault()
+  endGameScreen.classList.add('hidden')
 
   const minMines = 3
   const minWidth = 10
