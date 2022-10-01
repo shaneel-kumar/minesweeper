@@ -122,7 +122,13 @@ html {
   background-size: cover;
 }
 
-.cell:not(.mine, .blank):hover {
+.cell.flag {
+  background-image: url('./assets/icons/flag.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cell:not(.mine, .blank, .flag):hover {
   background: rgba(0, 0, 0, 0.2)
 }
 
@@ -219,11 +225,9 @@ html {
 }
 
 .endgame__game-over {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10rem;
+  margin: 5rem 0;
+  text-align: center;
+  font-size: 3.5rem;
   color: #222;
 }
 
@@ -241,5 +245,18 @@ html {
     position: fixed;
     right: 5rem;
     bottom: 5rem;
+  }
+
+  .endgame {
+    height: 100vh;
+  }
+
+  .endgame__game-over {
+    font-size: 10rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
   }
 }

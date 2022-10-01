@@ -24,6 +24,13 @@ Array.from(difficultyButtons).forEach(button => {
         difficultyHeading.innerText = difficulty[0].toUpperCase().concat(Array.from(difficulty).slice(1).join(''));
     });
 });
+window.addEventListener('contextmenu', (e) => {
+    const target = e.target;
+    if (!target.classList.contains('cell'))
+        return;
+    e.preventDefault();
+    target.classList.toggle('flag');
+});
 function gameloop(e) {
     const target = e.target;
     if (!target.classList.contains('cell'))

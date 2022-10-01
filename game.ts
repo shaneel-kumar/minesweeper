@@ -31,6 +31,13 @@ difficultyHeading.innerText = 'Medium'
     })
   })
 
+  window.addEventListener('contextmenu', (e: MouseEvent) => {
+    const target = e.target as HTMLDivElement
+    if (!target.classList.contains('cell')) return
+    e.preventDefault()
+    target.classList.toggle('flag')
+  })
+
   function gameloop(e: Event) {
     const target = e.target as HTMLElement
     if (!target.classList.contains('cell')) return
