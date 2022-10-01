@@ -101,6 +101,7 @@ html {
   justify-content: center;
   align-items: center;
   color: #222;
+  cursor: default;
 }
 
 .cell:nth-child(2n) {
