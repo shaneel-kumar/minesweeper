@@ -81,7 +81,8 @@ function getCustomGridDimensions(e) {
         alert('Decrease the custom numbers!');
         return;
     }
-    gameboard = Gameboard({ width, height, mines });
+    const difficulty = 'custom';
+    gameboard = Gameboard({ width, height, mines, difficulty });
     display.createGrid({ width, height });
     display.uiBoard.addEventListener('click', gameloop);
     difficultyHeading.innerText = 'Custom';
