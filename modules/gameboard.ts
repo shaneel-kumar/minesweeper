@@ -76,6 +76,13 @@ function Gameboard({width, height, difficulty = 'medium', mines = 20}: BoardDime
     }
   }
 
+  function isGameWon() {
+    console.table(state)
+    return state.every(row => (
+      row.every(cell => (cell !== 'E'))
+    ))
+  }
+
   function isGameOver() {
     return gameOver
   }
@@ -84,6 +91,7 @@ function Gameboard({width, height, difficulty = 'medium', mines = 20}: BoardDime
     state,
     difficulty,
     updateEmptySquare,
+    isGameWon,
     isGameOver
   }
 }

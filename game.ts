@@ -5,6 +5,7 @@ const difficultyButtons = document.querySelectorAll('.diff-btn')
 const customForm = document.getElementById('custom-form')
 const difficultyHeading = document.querySelector('.diff-heading') as HTMLHeadElement
 const endGameScreen = document.querySelector('.endgame') as HTMLDivElement
+const endGameMessage = document.querySelector('.endgame__game-over') as HTMLHeadElement
 
 endGameScreen.classList.toggle('hidden')
 customForm?.addEventListener('submit', getCustomGridDimensions)
@@ -55,7 +56,14 @@ difficultyHeading.innerText = 'Medium'
       const col = parseInt(colData)
       gameboard.updateEmptySquare({row, col})
       display.updateGrid(gameboard.state)
+
+      if (gameboard.isGameWon()) {
+        endGameMessage.innerText = 'Game Won!'
+        endGameScreen.classList.toggle('hidden')
+      }
+      
       if (gameboard.isGameOver()) {
+        endGameMessage.innerText = 'Game Over!'
         endGameScreen.classList.toggle('hidden')
       }
     }
