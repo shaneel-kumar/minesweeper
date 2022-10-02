@@ -5,6 +5,11 @@ const customForm = document.getElementById('custom-form');
 const difficultyHeading = document.querySelector('.diff-heading');
 const endGameScreen = document.querySelector('.endgame');
 const endGameMessage = document.querySelector('.endgame__game-over');
+// @ts-ignore
+const introTL = gsap.timeline()
+    .from('.title', { opacity: 0, y: 100, duration: 1, ease: 'back' })
+    .from('.gameGrid', { opacity: 0, y: 50, duration: 1, ease: 'back' }, '<0.5')
+    .from('.game-options', { opacity: 0, y: 100, duration: 1, ease: 'back' }, '<0.25');
 endGameScreen.classList.toggle('hidden');
 customForm === null || customForm === void 0 ? void 0 : customForm.addEventListener('submit', getCustomGridDimensions);
 const display = Display();
@@ -23,6 +28,8 @@ Array.from(difficultyButtons).forEach(button => {
         display.createGrid({ width, height });
         display.uiBoard.addEventListener('click', gameloop);
         difficultyHeading.innerText = difficulty[0].toUpperCase().concat(Array.from(difficulty).slice(1).join(''));
+        // @ts-ignore
+        gsap.from(display.uiBoard, { opacity: 0, y: 100, duration: 1, ease: 'back' });
     });
 });
 window.addEventListener('contextmenu', (e) => {
@@ -31,6 +38,8 @@ window.addEventListener('contextmenu', (e) => {
         return;
     e.preventDefault();
     target.classList.toggle('flag');
+    // @ts-ignore
+    gsap.from(target, { opacity: 0, duration: 1, scale: 1.5, ease: 'power3' });
 });
 function gameloop(e) {
     const target = e.target;

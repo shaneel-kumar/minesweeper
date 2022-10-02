@@ -1,11 +1,18 @@
 import Gameboard from './modules/gameboard.js'
 import Display from './modules/display.js'
+import { getJSDocParameterTags } from './node_modules/typescript/lib/typescript.js'
 
 const difficultyButtons = document.querySelectorAll('.diff-btn')
 const customForm = document.getElementById('custom-form')
 const difficultyHeading = document.querySelector('.diff-heading') as HTMLHeadElement
 const endGameScreen = document.querySelector('.endgame') as HTMLDivElement
 const endGameMessage = document.querySelector('.endgame__game-over') as HTMLHeadElement
+
+// @ts-ignore
+const introTL = gsap.timeline()
+  .from('.title', { opacity: 0, y: 100, duration: 1, ease: 'back' })
+  .from('.gameGrid', { opacity: 0, y: 50, duration: 1, ease: 'back' }, '<0.5')
+  .from('.game-options', { opacity: 0, y: 100, duration: 1, ease: 'back' }, '<0.25')
 
 endGameScreen.classList.toggle('hidden')
 customForm?.addEventListener('submit', getCustomGridDimensions)
@@ -29,6 +36,9 @@ difficultyHeading.innerText = 'Medium'
       display.createGrid({ width, height })
       display.uiBoard.addEventListener('click', gameloop)
       difficultyHeading.innerText = difficulty[0].toUpperCase().concat(Array.from(difficulty).slice(1).join(''))
+      
+      // @ts-ignore
+      gsap.from(display.uiBoard, { opacity: 0, y: 100, duration: 1, ease: 'back' })
     })
   })
 
@@ -37,6 +47,8 @@ difficultyHeading.innerText = 'Medium'
     if (!target.classList.contains('cell')) return
     e.preventDefault()
     target.classList.toggle('flag')
+    // @ts-ignore
+    gsap.from(target, { opacity: 0, duration: 1, scale: 1.5, ease: 'power3' })
   })
 
   function gameloop(e: Event) {
